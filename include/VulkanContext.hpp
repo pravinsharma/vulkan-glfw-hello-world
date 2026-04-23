@@ -27,22 +27,31 @@ struct VulkanContext {
     VkDescriptorSetLayout descriptorSetLayout = VK_NULL_HANDLE;
     VkDescriptorPool descriptorPool = VK_NULL_HANDLE;
     VkDescriptorSet descriptorSet = VK_NULL_HANDLE;
-    VkSampler sampler = VK_NULL_HANDLE;
-    VkBuffer vertexBuffer = VK_NULL_HANDLE;
-    VkDeviceMemory vertexBufferMemory = VK_NULL_HANDLE;
+     VkSampler sampler = VK_NULL_HANDLE;
+     VkBuffer vertexBuffer = VK_NULL_HANDLE;
+     VkDeviceMemory vertexBufferMemory = VK_NULL_HANDLE;
 
-    // Per-frame synchronization (one per swapchain image)
+     // Text dimensions for proper scaling
+     uint32_t m_textWidth = 0;
+     uint32_t m_textHeight = 0;
+
+     // Per-frame synchronization (one per swapchain image)
     std::vector<VkSemaphore> imageAvailableSemaphores;
     std::vector<VkSemaphore> renderFinishedSemaphores;
     std::vector<VkFence> inFlightFences;
     uint32_t currentFrame = 0;
 
-    ~VulkanContext();
-    bool initialize(void* glfwWindow);
-    void cleanup();
+     ~VulkanContext();
+     bool initialize(void* glfwWindow);
+     void cleanup();
 
-    void recreateSwapchain(void* glfwWindow);
-    void drawFrame();
+     void recreateSwapchain(void* glfwWindow);
+     void drawFrame();
+
+     void setTextDimensions(uint32_t width, uint32_t height) {
+         m_textWidth = width;
+         m_textHeight = height;
+     }
 
     uint32_t findMemoryType(uint32_t typeFilter, VkMemoryPropertyFlags properties);
     void createBuffer(VkDeviceSize size, VkBufferUsageFlags usage, VkMemoryPropertyFlags properties,

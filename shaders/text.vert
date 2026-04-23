@@ -6,7 +6,15 @@ layout(location = 1) in vec2 inUV;     // texture coordinate
 
 layout(location = 0) out vec2 fragUV;
 
+layout(push_constant) uniform PushConsts {
+    float scaleX;
+    float scaleY;
+} pc;
+
 void main() {
-    gl_Position = vec4(inPos, 0.0, 1.0);
+    vec2 scaled = inPos;
+    scaled.x *= pc.scaleX;
+    scaled.y *= pc.scaleY;
+    gl_Position = vec4(scaled, 0.0, 1.0);
     fragUV = inUV;
 }

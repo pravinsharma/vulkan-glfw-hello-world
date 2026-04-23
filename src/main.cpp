@@ -28,6 +28,9 @@ int main() {
             return -1;
         }
 
+        // Set text dimensions for proper aspect ratio scaling
+        vkCtx.setTextDimensions(fontRenderer.getTextWidth(), fontRenderer.getTextHeight());
+
         vkCtx.allocateDescriptorSet(textTextureView);
 
         while (!window.shouldClose()) {

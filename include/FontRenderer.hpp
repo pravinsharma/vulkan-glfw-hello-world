@@ -22,14 +22,19 @@ public:
                  VkCommandPool commandPool, VkQueue graphicsQueue);
     ~FontRenderer();
 
-    bool loadFont(const std::string& fontPath, uint32_t fontSize);
-    VkImageView createTextTexture(VulkanContext& ctx, const std::string& text);
-    void cleanup();
+     bool loadFont(const std::string& fontPath, uint32_t fontSize);
+     VkImageView createTextTexture(VulkanContext& ctx, const std::string& text);
+     void cleanup();
 
-private:
-    FT_Library m_freetype = nullptr;
-    FT_Face m_face = nullptr;
-    std::vector<GlyphMetrics> m_glyphs; // size 128, indexed by char
+     uint32_t getTextWidth() const { return m_textWidth; }
+     uint32_t getTextHeight() const { return m_textHeight; }
+
+ private:
+     FT_Library m_freetype = nullptr;
+     FT_Face m_face = nullptr;
+     std::vector<GlyphMetrics> m_glyphs; // size 128, indexed by char
+     uint32_t m_textWidth = 0;
+     uint32_t m_textHeight = 0;
 
     VkDevice m_device;
     VkPhysicalDevice m_physicalDevice;

@@ -127,6 +127,10 @@ VkImageView FontRenderer::createTextTexture(VulkanContext& ctx, const std::strin
         return VK_NULL_HANDLE;
     }
 
+    // Store dimensions for aspect ratio correction
+    m_textWidth = static_cast<uint32_t>(totalWidth);
+    m_textHeight = static_cast<uint32_t>(totalHeight);
+
     // Allocate pixel buffer (8-bit alpha)
     std::vector<uint8_t> pixels(totalWidth * totalHeight, 0);
 
