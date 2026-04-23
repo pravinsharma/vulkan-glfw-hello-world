@@ -1,41 +1,67 @@
-# Prerequisites
-*.d
+# CMake build directory
+build/
+cmake-build-*/
 
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
+# CMake generated files
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+compile_commands.json
+CMakeSettings.json
+.vs/
+.vscode/
+.idea/
+*.suo
+*.user
+*.userosscache
+*.sln
+*.vcxproj
+*.vcxproj.filters
 
-# Precompiled Headers
-*.gch
-*.pch
+# Shader compilation output
+*.spv
 
-# Linker files
-*.ilk
-
-# Debugger Files
-*.pdb
-
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
-
-# Fortran module files
-*.mod
-*.smod
-
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
-
-# Executables
+# Compiled binaries
 *.exe
 *.out
 *.app
 
-# debug information files
+# Object files
+*.o
+*.obj
+*.d
+
+# Libraries
+*.dll
+*.dylib
+*.so
+*.a
+*.lib
+*.la
+*.lai
+
+# Debug files
+*.pdb
 *.dwo
+*.ilk
+
+# Precompiled headers
+*.gch
+*.pch
+
+# Fortran modules
+*.mod
+*.smod
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+
+# Logs
+*.log
